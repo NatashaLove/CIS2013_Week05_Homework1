@@ -2,7 +2,10 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include<iomanip>
+
 using namespace std;
+
 // Input of month and year
 void input(int month, int year);
 //Finding if it is a leap year
@@ -12,7 +15,7 @@ int GetDaysInMonth (const int year, const int month);
 
 int GetDayOfWeek(const int year, const int month);
 
-void ShowCal(const int year, const int month);
+int ShowCal(const int year, const int month);
 
 int main (){
 	int m, y;
@@ -21,20 +24,10 @@ int main (){
 	//IsLeapYear (y);
 	//GetDaysInMonth (y, m);
 	//GetDayOfWeek(y, m);
-	ShowCal(y, m);
 	
 	
 	
-	
-	
-	
-	
-
-
-
-
-
-return 0;
+return ShowCal(y, m);
 }
 
 
@@ -70,7 +63,7 @@ int GetDayOfWeek(const int year, const int month) { /* 0 = Sunday */
    static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
    return (y + y/4 - y/100 + y/400 + t[month-1] + d) % 7;
 }
-void ShowCal(const int year, const int month) {
+int ShowCal(const int year, const int month) {
    string monthName[] = {"January","February","March","April","May","June","July",
    "August","September","October","November","December"};
    int days = GetDaysInMonth(year, month);
@@ -86,5 +79,6 @@ void ShowCal(const int year, const int month) {
 		if (++dow>6) { dow = 0; cout << endl << " "; }
 	}
    cout << endl;
+   return 0;
 }
 
