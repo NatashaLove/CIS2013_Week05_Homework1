@@ -7,13 +7,21 @@ using namespace std;
 void input(int month, int year);
 //Finding if it is a leap year
 bool IsLeapYear(const int year);
+// Getting days of month
+int GetDaysInMonth (const int year, const int month);
+
+int GetDayOfWeek(const int year, const int month);
+
+void ShowCal(const int year, const int month);
 
 int main (){
 	int m, y;
 	
 	input (m, y);
-	IsLeapYear (y);
-	
+	//IsLeapYear (y);
+	//GetDaysInMonth (y, m);
+	//GetDayOfWeek(y, m);
+	ShowCal(y, m);
 	
 	
 	
@@ -56,3 +64,27 @@ int GetDaysInMonth (const int year, const int month) {
 		default: return 31;
   }   
 }
+int GetDayOfWeek(const int year, const int month) { /* 0 = Sunday */
+   const int d = 1;
+   int y = year - (month < 3);
+   static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+   return (y + y/4 - y/100 + y/400 + t[month-1] + d) % 7;
+}
+void ShowCal(const int year, const int month) {
+   string monthName[] = {"January","February","March","April","May","June","July",
+   "August","September","October","November","December"};
+   int days = GetDaysInMonth(year, month);
+   int dow = GetDayOfWeek(year, month);
+   cout << monthName[month-1] << endl;
+   cout << " Sun Mon Tue Wed Thu Fri Sat" << endl;
+   cout << " --- --- --- --- --- --- ---" << endl << " ";
+   for(int day=0; day<dow; day++) {
+	   cout << "  "; 
+	}
+   for(int day=1; day<=days; day++) {
+      cout << setw(3) << day << " ";
+		if (++dow>6) { dow = 0; cout << endl << " "; }
+	}
+   cout << endl;
+}
+
