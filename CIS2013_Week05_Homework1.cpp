@@ -44,10 +44,10 @@ void Calendar(const int year, const int month) {
    int days = getNumberOfDaysInMonth(year, month);
    int dow = GetDayOfWeek(year, month);
    for(int day=0; day<dow; day++) {
-	   cout << ""; 
+	   cout << setw(5) << ""; 
 	}
    for(int day=1; day<=days; day++) {
-      cout << setw(5) << day << "";
+      cout << setw(5) << day;
 		if (++dow>6) { dow = 0; cout << endl << ""; }
 	}
    cout << endl;
@@ -59,9 +59,9 @@ void printMonthTitle(int year, int month)
 {
 printMonthName(month);
 cout << " " << year << endl;
-cout << "-----------------------------------" << endl;
+cout << " ----------------------------------- " << endl;
 cout << " Sun  Mon  Tue  Wed  Thu  Fri  Sat" << endl;
-cout << " ---  ---  ---  ---  ---  ---  ---" << endl << " ";
+cout << " ---  ---  ---  ---  ---  ---  --- " << endl;
 }
 // Pint English name for the month
 void printMonthName(int month)
