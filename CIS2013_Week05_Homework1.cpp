@@ -59,7 +59,7 @@ void printMonthTitle(int year, int month)
 {
 printMonthName(month);
 cout << " " << year << endl;
-cout << " ----------------------------------- " << endl;
+cout << " ---------------------------------- " << endl;
 cout << " Sun  Mon  Tue  Wed  Thu  Fri  Sat" << endl;
 cout << " ---  ---  ---  ---  ---  ---  --- " << endl;
 }
@@ -69,40 +69,40 @@ void printMonthName(int month)
 switch (month)
 {
 case 1:
-cout << "January";
+cout << setw(18) << "January";
 break;
 case 2:
-cout << "February";
+cout << setw(18) << "February";
 break;
 case 3:
-cout << "March";
+cout << setw(18) << "March";
 break;
 case 4:
-cout << "April";
+cout << setw(18) << "April";
 break;
 case 5:
-cout << "May";
+cout << setw(18) << "May";
 break;
 case 6:
-cout << "June";
+cout << setw(18) << "June";
 break;
 case 7:
-cout << "July";
+cout << setw(18) << "July";
 break;
 case 8:
-cout << "August";
+cout << setw(18) << "August";
 break;
 case 9:
-cout << "September";
+cout << setw(18) << "September";
 break;
 case 10:
-cout << "October";
+cout << setw(18) << "October";
 break;
 case 11:
-cout << "November";
+cout << setw(18) << "November";
 break;
 case 12:
-cout << setw(16) << "December";
+cout << setw(18) << "December";
 } }
 
 
