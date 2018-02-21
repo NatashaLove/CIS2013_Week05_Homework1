@@ -1,84 +1,156 @@
+// The purpose of the program is to make a calendar
 
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include<iomanip>
-
+#include <iomanip>
 using namespace std;
 
-// Input of month and year
-void input(int month, int year);
-//Finding if it is a leap year
-bool IsLeapYear(const int year);
-// Getting days of month
-int GetDaysInMonth (const int year, const int month);
-
+// Print the title of the month and week days
+void printMonthTitle(int year, int month);
+void printMonthName(int month);
 int GetDayOfWeek(const int year, const int month);
+// Number of days in month
+int getNumberOfDaysInMonth(int year, int month);
+// Print calendar
+void Calendar(const int year, const int month); 
+// Determine if it is a leap year
+bool isLeapYear(int year);
 
-int ShowCal(const int year, const int month);
+int main()
+{
+	void Calendar (const int year, const int month);
+// Ask the user to enter year
+cout << endl;
+cout << "Enter year : ";
+int year;
+cin >> year;
+// Ask the user to enter month
+cout << endl;
+cout << "Enter month : ";
+int month;
+cin >> month;
+// Print calendar for the month of the year
+cout << endl;
+Calendar(year, month);
 
-int main (){
-	int m, y;
-	
-	input (m, y);
-	//IsLeapYear (y);
-	//GetDaysInMonth (y, m);
-	//GetDayOfWeek(y, m);
-	
-	
-	
-return ShowCal(y, m);
+return 0;
 }
 
+// Print the calendar for a month in a year
 
-void input(int month, int year) {
-	using namespace std;
-	int m, y;
-	cout << endl;
-	cout << "Hello!!! " << endl;
-	cout << endl;
-	cout << "Enter the month "<< endl;
-	cin >> m;
-	cout << endl;
-	cout << "Enter the year " << endl;
-	cin >> y;
-	cout << endl;
+void Calendar(const int year, const int month) {
+ 
+   printMonthTitle(year, month);
+   
+   int days = getNumberOfDaysInMonth(year, month);
+   int dow = GetDayOfWeek(year, month);
+   for(int day=0; day<dow; day++) {
+	   cout << ""; 
+	}
+   for(int day=1; day<=days; day++) {
+      cout << setw(5) << day << "";
+		if (++dow>6) { dow = 0; cout << endl << ""; }
+	}
+   cout << endl;
+   
 }
-bool IsLeapYear(const int year) {
-   return ((year%400==0) || (year%4==0 && year%100!=0));
+
+// Print the month title
+void printMonthTitle(int year, int month)
+{
+printMonthName(month);
+cout << " " << year << endl;
+cout << "-----------------------------------" << endl;
+cout << " Sun  Mon  Tue  Wed  Thu  Fri  Sat" << endl;
+cout << " ---  ---  ---  ---  ---  ---  ---" << endl << " ";
 }
-int GetDaysInMonth (const int year, const int month) {
-   switch (month) {
-	    case 2: return IsLeapYear(year) ? 29 : 28;
-	    case 4:
-		case 6:
-		case 9:
-		case 11: return 30;
-		default: return 31;
-  }   
-}
+// Pint English name for the month
+void printMonthName(int month)
+{
+switch (month)
+{
+case 1:
+cout << "January";
+break;
+case 2:
+cout << "February";
+break;
+case 3:
+cout << "March";
+break;
+case 4:
+cout << "April";
+break;
+case 5:
+cout << "May";
+break;
+case 6:
+cout << "June";
+break;
+case 7:
+cout << "July";
+break;
+case 8:
+cout << "August";
+break;
+case 9:
+cout << "September";
+break;
+case 10:
+cout << "October";
+break;
+case 11:
+cout << "November";
+break;
+case 12:
+cout << setw(16) << "December";
+} }
+
+
 int GetDayOfWeek(const int year, const int month) { /* 0 = Sunday */
-   const int d = 1;
+   const int d = 0;
    int y = year - (month < 3);
    static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
    return (y + y/4 - y/100 + y/400 + t[month-1] + d) % 7;
 }
-int ShowCal(const int year, const int month) {
-   string monthName[] = {"January","February","March","April","May","June","July",
-   "August","September","October","November","December"};
-   int days = GetDaysInMonth(year, month);
-   int dow = GetDayOfWeek(year, month);
-   cout << monthName[month-1] << endl;
-   cout << " Sun Mon Tue Wed Thu Fri Sat" << endl;
-   cout << " --- --- --- --- --- --- ---" << endl << " ";
-   for(int day=0; day<dow; day++) {
-	   cout << "  "; 
-	}
-   for(int day=1; day<=days; day++) {
-      cout << setw(3) << day << " ";
-		if (++dow>6) { dow = 0; cout << endl << " "; }
-	}
-   cout << endl;
-   return 0;
+
+
+// Get the number of days in a month
+int getNumberOfDaysInMonth(int year, int month)
+{
+	bool isLeapYear(int year);
+    if(month == 1)
+      return 31;
+    else if (month == 2)
+            { if(isLeapYear(year))
+               return 29;
+               else 
+                return 28;
+                }
+    else if(month == 3)
+    return 31;
+    else if(month == 4)
+    return 30;
+    else if(month == 5)
+    return 31;
+    else if(month == 6)
+    return 30;
+    else if(month == 7)
+    return 31;
+    else if(month == 8)
+    return 31;
+    else if(month == 9)
+    return 30;
+    else if(month == 10)
+    return 31;
+    else if(month == 11)
+    return 30;
+    else if(month == 12)
+    return 31;
 }
 
+bool isLeapYear(int year)
+{ if(((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+  return true;
+  else 
+     return false;
+}
