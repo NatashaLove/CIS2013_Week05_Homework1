@@ -107,7 +107,7 @@ cout << setw(18) << "December";
 
 
 int GetDayOfWeek(const int year, const int month) { /* 0 = Sunday */
-   const int d = 0;
+   const int d = 1;
    int y = year - (month < 3);
    static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
    return (y + y/4 - y/100 + y/400 + t[month-1] + d) % 7;
