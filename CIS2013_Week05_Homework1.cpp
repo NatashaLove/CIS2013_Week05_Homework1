@@ -115,37 +115,36 @@ int GetDayOfWeek(const int year, const int month) { /* 0 = Sunday */
 
 
 // Get the number of days in a month
-int getNumberOfDaysInMonth(int year, int month)
-{
-	bool isLeapYear(int year);
-    if(month == 1)
-      return 31;
-    else if (month == 2)
-            { if(isLeapYear(year))
-               return 29;
-               else 
-                return 28;
-                }
-    else if(month == 3)
-    return 31;
-    else if(month == 4)
-    return 30;
-    else if(month == 5)
-    return 31;
-    else if(month == 6)
-    return 30;
-    else if(month == 7)
-    return 31;
-    else if(month == 8)
-    return 31;
-    else if(month == 9)
-    return 30;
-    else if(month == 10)
-    return 31;
-    else if(month == 11)
-    return 30;
-    else if(month == 12)
-    return 31;
+
+int getNumberOfDaysInMonth(int year, int month) { 
+switch (month) { 
+case 1: return 31; 
+case 2: { 
+if (isLeapYear(year)) return 29; 
+else return 28;
+ } 
+case 3: return 31; 
+break;
+case 4: return 30; 
+break;
+case 5: return 31;
+break;
+case 6: return 30;
+break;
+case 7: return 31;
+break;
+case 8: return 31;
+break;
+case 9: return 30;
+break;
+case 10: return 31;
+break;
+case 11: return 30;
+break;
+case 12: return 31;
+break;
+ }
+
 }
 
 bool isLeapYear(int year)
